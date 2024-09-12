@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Date;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * 初始化测试student表
@@ -15,12 +16,13 @@ import lombok.Data;
  */
 @TableName(value ="student")
 @Data
+@Accessors(chain = true)
 public class Student implements Serializable {
     /**
      * 主键ID
      */
     @TableId(type = IdType.AUTO)
-    private Long id;
+    private Integer id;
 
     /**
      * 姓名
@@ -30,7 +32,7 @@ public class Student implements Serializable {
     /**
      * 年龄
      */
-    private Byte age;
+    private Integer age;
 
     /**
      * 生日
