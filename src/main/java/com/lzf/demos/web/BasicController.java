@@ -45,6 +45,16 @@ public class BasicController {
         return user;
     }
 
+    // http://127.0.0.1:8080/user1
+    @RequestMapping("/user1")
+    @ResponseBody
+    public User user1() {
+        User user = new User();
+        user.setName(null);
+        user.setAge(666);
+        return user;
+    }
+
     // http://127.0.0.1:8080/save_user?name=newName&age=11
     @RequestMapping("/save_user")
     @ResponseBody
