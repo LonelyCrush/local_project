@@ -9,8 +9,8 @@ import com.lzf.local.d240919.common.Notification;
 public class Main {
 
   public static void main(String[] args) {
-    AlertChange alertChange = new AlertChange(new AlertRule(), new Notification());
-    alertChange.check(
+    Alert alert = new Alert(new AlertRule(), new Notification());
+    alert.check(
         "api",
         1L,
         1L,
