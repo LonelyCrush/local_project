@@ -22,10 +22,10 @@ public class CronTask {
   /**
    * 定时任务，需要在主类添加注解 @EnableScheduling
    */
-  @Scheduled(cron = "0/2 * * ? * ?")
-  public void doTask() {
-    System.out.println("CronTask doTask...");
-  }
+//  @Scheduled(cron = "0/2 * * ? * ?")
+//  public void doTask() {
+//    System.out.println("CronTask doTask...");
+//  }
 
   /**
    * 缓存查询结果
