@@ -15,4 +15,11 @@
         ID,NAME,AGE,
         BIRTH
     </sql>
+
+  <insert id="batchAdd" parameterType="java.util.List">
+    insert into student(name, age, birth) values
+    <foreach collection="studentList" item="item" index="index" separator=",">
+      (#{item.name}, #{item.age}, #{item.birth})
+    </foreach>
+  </insert>
 </mapper>
