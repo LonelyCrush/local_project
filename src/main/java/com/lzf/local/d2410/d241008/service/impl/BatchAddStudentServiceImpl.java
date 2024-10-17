@@ -10,11 +10,13 @@ import java.util.List;
 import javax.annotation.Resource;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 /**
  * @author leizefeng
  */
+@Service
 public class BatchAddStudentServiceImpl extends ServiceImpl<StudentMapper, Student>
     implements BatchAddStudentService {
 
