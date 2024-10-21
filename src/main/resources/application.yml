@@ -14,7 +14,11 @@ logging:
       lzf:
         debug
 
-scheduled-thread-pool:
-  corePoolSize: 1
+thread-pool:
+  corePoolSize: 5
+  maxPoolSize: 100
+  queueCapacity: 2048
+  keepAliveSeconds: 60
+  threadNamePrefix: common
 
 scheduled-period: 60

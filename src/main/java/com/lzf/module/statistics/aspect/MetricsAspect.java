@@ -1,12 +1,14 @@
 package com.lzf.module.statistics.aspect;
 
 import com.lzf.module.statistics.demo.Metrics;
+import javax.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Component;
 
 /**
@@ -17,8 +19,11 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class MetricsAspect {
 
-  @Autowired
+  @Resource
   private Metrics metrics;
+
+  @Resource(name = "commonThreadPoolTaskExecutor")
+  private ThreadPoolTaskExecutor threadPoolTaskExecutor;
 
   // 对注解生效
   @Pointcut("@annotation(com.lzf.module.statistics.annotation.EnableMetrics)")
@@ -37,7 +42,8 @@ public class MetricsAspect {
     long end = System.currentTimeMillis();
     log.debug("Ending metrics-[{}]-[{}]-[cost {} milliseconds]",
         className, apiName, end - start);
-    metrics.recordResponseTime(apiName, end - start);
+    threadPoolTaskExecutor.submit(() ->
+        metrics.recordResponseTime(apiName, end - start));
 
     return proceed;
   }

@@ -3,6 +3,7 @@ package com.lzf.module.statistics.demo;
 
 import cn.hutool.json.JSONUtil;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,10 +49,10 @@ public class Metrics {
           String apiName = entrySet.getKey();
           List<Double> responseTimeList = entrySet.getValue();
           stateMap.putIfAbsent(apiName, new HashMap<>());
-          Double max = responseTimeList.stream().max(Double::compare).orElse(Double.NaN);
           Double avg = responseTimeList.stream()
               .mapToDouble(Double::doubleValue).average().orElse(Double.NaN);
-          stateMap.get(apiName).put("max", max);
+          stateMap.get(apiName).put("max", Collections.max(responseTimeList));
+          stateMap.get(apiName).put("min", Collections.min(responseTimeList));
           stateMap.get(apiName).put("avg", avg);
           stateMap.get(apiName).put("count", (double) responseTimeList.size());
         }
