@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 /**
  * @author leizefeng
  */
-@Component
-@EnableAsync
+//@Component
+//@EnableAsync
 @Slf4j
 public class ScheduledDemo {
 

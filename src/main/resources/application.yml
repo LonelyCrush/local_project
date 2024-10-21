@@ -13,3 +13,8 @@ logging:
     com:
       lzf:
         debug
+
+scheduled-thread-pool:
+  corePoolSize: 1
+
+scheduled-period: 60

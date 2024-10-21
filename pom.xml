@@ -68,6 +68,13 @@
             <artifactId>hutool-all</artifactId>
             <version>5.8.31</version>
         </dependency>
+
+        <!-- Aspect -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>6.1.13</version>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
