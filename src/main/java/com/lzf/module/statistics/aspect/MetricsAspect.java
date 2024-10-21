@@ -20,20 +20,23 @@ public class MetricsAspect {
   @Autowired
   private Metrics metrics;
 
+  // 对注解生效
   @Pointcut("@annotation(com.lzf.module.statistics.annotation.EnableMetrics)")
   public void metricsAspect() {}
 
   @Around("metricsAspect()")
   public Object aroundMetrics(ProceedingJoinPoint joinPoint) throws Throwable {
+    String className = joinPoint.getTarget().getClass().getName();
     String apiName = joinPoint.getSignature().getName();
 
     long start = System.currentTimeMillis();
-    log.info("Starting metrics-[{}]-[start]", apiName);
+    log.debug("Starting metrics-[{}]-[{}]", className, apiName);
 
     Object proceed = joinPoint.proceed();
 
     long end = System.currentTimeMillis();
-    log.info("Ending metrics-[{}]-[end]-[cost {} milliseconds]", apiName, end - start);
+    log.debug("Ending metrics-[{}]-[{}]-[cost {} milliseconds]",
+        className, apiName, end - start);
     metrics.recordResponseTime(apiName, end - start);
 
     return proceed;

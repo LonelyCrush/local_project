@@ -2,7 +2,6 @@ package com.lzf.module.statistics.controller;
 
 import com.lzf.module.statistics.annotation.EnableMetrics;
 import com.lzf.module.statistics.demo.Metrics;
-import java.util.concurrent.TimeUnit;
 import javax.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
