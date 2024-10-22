@@ -22,3 +22,17 @@ thread-pool:
   threadNamePrefix: common
 
 scheduled-period: 60
+
+smsotp:
+  initialValue:
+    version: 0
+    lastSendOtpTimes: 0
+    lastVerifyOtpTimes: 0
+    codeLength: 6
+  maximum:
+    lastSendOtpTimes: 5
+    lastVerifyOtpTimes: 3
+  interval:
+    sendFreezeTime: 1 # 单位：h
+    sendIntervalTime: 100 # 单位：s
+

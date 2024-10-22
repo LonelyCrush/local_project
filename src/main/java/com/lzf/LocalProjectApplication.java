@@ -9,7 +9,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  * @author leizefeng
  */
 @EnableScheduling
-@MapperScan({"com.lzf.*.mapper"})
+@MapperScan({"com.lzf.**.mapper"})
 @SpringBootApplication
 public class LocalProjectApplication {
 
