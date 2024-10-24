@@ -1,4 +1,4 @@
-package com.lzf.local.d2410.d241024;
+package com.lzf.local.d2410.d241024.mdc;
 
 import java.util.UUID;
 import lombok.extern.slf4j.Slf4j;
