@@ -11,8 +11,8 @@ spring:
 logging:
   level:
     com:
-      lzf:
-        debug
+      lzf: debug
+
 
 thread-pool:
   corePoolSize: 5
