@@ -19,7 +19,7 @@ thread-pool:
   maxPoolSize: 100
   queueCapacity: 2048
   keepAliveSeconds: 60
-  threadNamePrefix: common
+  threadNamePrefix: common-
 
 scheduled-period: 60
 

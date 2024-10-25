@@ -68,7 +68,7 @@ public class Metrics {
     executor.shutdown();
   }
 
-  @PostConstruct
+//  @PostConstruct
   public void init() {
     repeatedReport();
   }

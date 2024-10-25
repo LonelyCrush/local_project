@@ -7,6 +7,5 @@ package com.lzf.fast;
 public class FastMain {
 
   public static void main(String[] args) {
-
   }
 }
