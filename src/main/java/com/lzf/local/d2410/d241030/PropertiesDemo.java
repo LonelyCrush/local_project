@@ -1,4 +1,4 @@
-package com.lzf.local.d2410.d241030.properties;
+package com.lzf.local.d2410.d241030;
 
 import java.io.IOException;
 import java.io.InputStream;
