@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class RSAUtils {
 
-  public static final int KEY_SIZE = 512;
+  public static final int KEY_SIZE = 2048;
 
   public static final String KEY_PUBLIC_KEY = "publicKey";
 
@@ -52,6 +52,7 @@ public class RSAUtils {
   public static void main(String[] args) {
     Map<String, String> map = createKeys();
     System.out.println(map.get(KEY_PUBLIC_KEY));
+    System.out.println(map.get(KEY_PUBLIC_KEY).length());
     System.out.println();
     System.out.println(map.get(KEY_PRIVATE_KEY));
   }

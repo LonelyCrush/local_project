@@ -4,6 +4,7 @@ import cn.hutool.core.bean.BeanUtil;
 import com.lzf.d240819.entity.Student;
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import org.springframework.cglib.beans.BeanMap;
 
@@ -13,14 +14,15 @@ import org.springframework.cglib.beans.BeanMap;
 public class BeanAndMap {
 
   public static void main(String[] args) throws Exception {
-    Student student = new Student();
-    student.setId(1);
-    BeanMap beanMap = BeanMap.create(student);
-    System.out.println(beanMap);
-    beanMap.put("name", "Jack");
-    System.out.println(beanMap);
-    student.setName("Jack");
-    System.out.println(beanMap);
+//    Student student = new Student();
+//    student.setId(1);
+//    BeanMap beanMap = BeanMap.create(student);
+//    System.out.println(beanMap);
+//    beanMap.put("name", "Jack");
+//    System.out.println(beanMap);
+//    student.setName("Jack");
+//    System.out.println(beanMap);
+    test4();
   }
 
   private static void test2() {
@@ -42,6 +44,17 @@ public class BeanAndMap {
     map.put("birth", "2003/10/13");
     Student student = new Student();
     BeanUtil.copyProperties(map, student, true);
+    System.out.println(student);
+  }
+
+  private static void test4() {
+    Map<String, Object> map = new LinkedHashMap<>();
+    map.put("id", 1);
+    map.put("name", "Fred");
+    map.put("age", 21);
+    map.put("birth", "2003-10-13T00:00");
+    Student student = new Student();
+    BeanUtil.copyProperties(map, student);
     System.out.println(student);
   }
 }
