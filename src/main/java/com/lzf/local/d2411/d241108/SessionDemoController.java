@@ -5,7 +5,6 @@ import com.lzf.module.myproject.util.WebUtils;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import org.springframework.session.SessionRepository;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,9 +18,6 @@ public class SessionDemoController {
 
   @Resource
   private SpringSessionMapper springSessionMapper;
-
-  @Resource
-  private SessionRepository sessionRepository;
 
   @PostMapping("/get")
   public void get() {

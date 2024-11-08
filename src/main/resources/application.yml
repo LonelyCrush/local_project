@@ -10,7 +10,12 @@ spring:
 #    url: jdbc:sqlserver://10.1.107.105:1433;DataBase=practice;encrypt=true;trustServerCertificate=true
 #    username: sa
 #    password: forms123456
-
+#  session:
+#    store-type: jdbc # 或者启动类加注解
+#    jdbc:
+#      initialize-schema: embedded # 如果使用嵌入式数据库，Spring会自动创建模式。
+##      table-name:
+#    timeout: 600 # 单位是秒
 logging:
   level:
     com:
