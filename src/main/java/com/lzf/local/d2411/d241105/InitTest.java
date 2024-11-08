@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 /**
  * @author leizefeng
  */
-@Component
+//@Component
 public class InitTest implements InitializingBean, ApplicationContextAware {
 
   private ApplicationContext context;

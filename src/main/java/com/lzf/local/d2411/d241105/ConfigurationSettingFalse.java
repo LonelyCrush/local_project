@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Configuration;
  * 但其中的 BeanOne 与 beanOne1 不是同一个 Bean
  *
  */
-@Configuration(proxyBeanMethods = false)
+//@Configuration(proxyBeanMethods = false)
 public class ConfigurationSettingFalse {
 
   @Bean

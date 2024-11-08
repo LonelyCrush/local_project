@@ -7,7 +7,7 @@ import javax.annotation.PostConstruct;
  */
 public class BeanOne {
 
-//  @PostConstruct
+  @PostConstruct
   public void init() {
     System.out.println("BeanOne init");
   }
