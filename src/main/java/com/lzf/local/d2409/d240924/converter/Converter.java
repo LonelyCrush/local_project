@@ -18,6 +18,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.GenericTypeResolver;
 import org.springframework.http.HttpHeaders;
@@ -27,7 +28,6 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.lang.Nullable;
-import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StreamUtils;
 
@@ -35,16 +35,16 @@ import org.springframework.util.StreamUtils;
  * @author leizefeng
  */
 @Slf4j
-@Component
 public class Converter extends MappingJackson2HttpMessageConverter {
 
   public Converter(ObjectMapper objectMapper) {
     super(objectMapper);
   }
 
+  @NonNull
   @Override
   public Object read(
-      Type type, @Nullable Class<?> contextClass, final HttpInputMessage inputMessage)
+      @NonNull Type type, @Nullable Class<?> contextClass, final HttpInputMessage inputMessage)
       throws IOException, HttpMessageNotReadableException {
     String body = StreamUtils.copyToString(inputMessage.getBody(), StandardCharsets.UTF_8);
     JsonNode jsonNode = defaultObjectMapper.readValue(body, JsonNode.class);
@@ -69,11 +69,13 @@ public class Converter extends MappingJackson2HttpMessageConverter {
     log.info("Converter read decrypt request: {}", jsonNode);
     HttpInputMessage inputMessageWrapper =
         new HttpInputMessage() {
+          @NonNull
           @Override
           public InputStream getBody() throws IOException {
             return new ByteArrayInputStream(defaultObjectMapper.writeValueAsBytes(jsonNode));
           }
 
+          @NonNull
           @Override
           public HttpHeaders getHeaders() {
             return inputMessage.getHeaders();
@@ -166,7 +168,7 @@ public class Converter extends MappingJackson2HttpMessageConverter {
 
   @Override
   protected void writeInternal(
-      Object object, @Nullable Type type, HttpOutputMessage outputMessage)
+      @NonNull Object object, @Nullable Type type, @NonNull HttpOutputMessage outputMessage)
       throws IOException, HttpMessageNotWritableException {
     // 仅处理某些格式
     if (object instanceof EncryptResp) {
@@ -176,7 +178,7 @@ public class Converter extends MappingJackson2HttpMessageConverter {
       }
       // 仅当内容不为空时加密
       JsonNode jsonNode =
-          defaultObjectMapper.readTree(defaultObjectMapper.writeValueAsString(retInfo));
+          defaultObjectMapper.readTree(defaultObjectMapper.writeValueAsString(retInfo.getData()));
       log.info("Converter writeInternal real response: {}", jsonNode);
       if (jsonNode.isArray()) {
         Iterator<JsonNode> elements = jsonNode.elements();
@@ -191,14 +193,13 @@ public class Converter extends MappingJackson2HttpMessageConverter {
             }
           }
         }
-      } else {
+      } else if (jsonNode.isObject()){
         ObjectNode objectNode = (ObjectNode) jsonNode;
-        securityConvert(retInfo.getClass(),
+        securityConvert(retInfo.getData().getClass(),
             objectNode, (short) 1, getParamOrReturnGenericList(type));
       }
       log.info("Converter writeInternal encrypt response: {}", jsonNode);
-      EncryptResp encryptResp = defaultObjectMapper.convertValue(jsonNode, EncryptResp.class);
-      retInfo.setData(encryptResp.getData());
+      retInfo.setData(jsonNode);
     }
     super.writeInternal(object, type, outputMessage);
   }

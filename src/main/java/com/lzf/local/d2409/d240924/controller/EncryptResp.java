@@ -10,5 +10,5 @@ import lombok.Data;
 public class EncryptResp {
 
   @Encryption
-  private String data;
+  private Object data;
 }
