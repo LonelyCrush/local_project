@@ -1,7 +1,7 @@
 package com.lzf.local.d2411.d241108;
 
 import com.lzf.local.d2411.d241108.mapper.SpringSessionMapper;
-import com.lzf.module.myproject.util.WebUtils;
+import com.lzf.modules.myproject.util.WebUtils;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
