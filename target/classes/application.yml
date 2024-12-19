@@ -7,6 +7,10 @@ spring:
     url: jdbc:mysql://localhost:3306/local_db?serverTimezone=GMT%2B8&useSSL=false
     username: root
     password: 123456
+  servlet:
+    multipart:
+      max-request-size: 100MB
+      max-file-size: 10MB
 #    url: jdbc:sqlserver://10.1.107.105:1433;DataBase=practice;encrypt=true;trustServerCertificate=true
 #    username: sa
 #    password: forms123456
@@ -44,3 +48,6 @@ smsotp:
     sendFreezeTime: 1 # 单位：h
     sendIntervalTime: 100 # 单位：s
 
+file-upload:
+  allow-content-type: image
+  local-folder-path: /secure-upload-folder/

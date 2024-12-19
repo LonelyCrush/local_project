@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 /**
  * @author leizefeng
  */
-@Component
+//@Component
 @Aspect
 @Slf4j
 public class MetricsAspect {
