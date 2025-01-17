@@ -1,6 +1,7 @@
 package com.lzf.local.d2412.d241224;
 
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.lzf.local.d2412.d241224.mapper.SysTermsMapper;
 import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
