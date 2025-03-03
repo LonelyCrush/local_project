@@ -51,3 +51,7 @@ smsotp:
 file-upload:
   allow-content-type: image
   local-folder-path: /secure-upload-folder/
+
+brush:
+  - 2 4 5 6 12 14 16 17 18 23 25 26 28 32 33 34 36 37 38 39
+  - 41
