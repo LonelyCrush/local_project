@@ -15,6 +15,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 @MapperScan({"com.lzf.**.mapper"})
 @SpringBootApplication
+
 public class LocalProjectApplication {
 
     public static void main(String[] args) {
